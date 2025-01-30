@@ -65,7 +65,7 @@ sui move test
 ## Module Implementation
 The **bank.move** module is responsible for handling deposits and withdrawals securely. It includes:
 - **AssetBank struct**: Stores coins tracks total deposits and active receipts.
-- **Receipt struct**: Represents the NFT issued for each deposit.
+- **Receipt struct**: An NFT representing a reciept issued for each deposit.
 - **Deposit method**: Allows users to deposit any coin type and receive an NFT receipt.
 - **Withdraw method**: Allows users to return the receipt and reclaim their funds.
 - **Event emissions**: Tracks all deposits and withdrawals in the system.
