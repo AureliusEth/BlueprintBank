@@ -32,10 +32,10 @@ module 0x1::bank_tests {
            //Mint SUI for testing
            let coin = coin::mint_for_testing<SUI>(DEPOSIT_AMOUNT, test_scenario::ctx(&mut scenario));
 
-           // Call our deposit function
+           //Call our deposit function
            bank::deposit<SUI>(&mut bank, coin, test_scenario::ctx(&mut scenario));
 
-           //check all bank fields were updated correctly post deposit
+           //Check all bank fields were updated correctly post deposit
            let (deposits, active_receipts) = bank::test_get_bank_fields(&bank);
            assert!(deposits == 1, BANK_FIELD_ERROR);
            assert!(active_receipts == 1, BANK_FIELD_ERROR);
@@ -46,8 +46,9 @@ module 0x1::bank_tests {
        {
            // Take the generated Receipt 
            let receipt = test_scenario::take_from_sender<Receipt<Coin<SUI>>>(&scenario);
-           assert!(receipt_amount(&receipt) == DEPOSIT_AMOUNT, RECEIPT_INVALID);
+
            // verifies receipt amount and therefore its creation
+           assert!(receipt_amount(&receipt) == DEPOSIT_AMOUNT, RECEIPT_INVALID);
            test_scenario::return_to_sender(&scenario, receipt);
        };
 
@@ -69,8 +70,10 @@ module 0x1::bank_tests {
 
            //Take the shared bank from the module that intialised it 
            let mut bank = test_scenario::take_shared<AssetBank>(&scenario);
+
            // Init coin with a zero value 
            let coin = coin::zero<SUI>(test_scenario::ctx(&mut scenario));
+
            // Call our deposit function
            bank::deposit<SUI>(&mut bank, coin, test_scenario::ctx(&mut scenario));
            test_scenario::return_shared(bank);
@@ -125,7 +128,7 @@ module 0x1::bank_tests {
            //Give the intial supply to the sender
            transfer::public_transfer(initial_supply, tx_context::sender(test_scenario::ctx(&mut scenario)));
 
-           // Give the treasury capaility to the sender
+           // Give the treasury capability to the sender
            transfer::public_transfer(treasury_cap, tx_context::sender(test_scenario::ctx(&mut scenario)));
        };
 
