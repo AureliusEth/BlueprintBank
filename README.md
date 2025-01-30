@@ -1,7 +1,7 @@
-# Sui Asset Bank
+# Blueprint Bank
 
 ## Overview
-The **Sui Asset Bank** is a flexible, generic asset deposit and withdrawal system implemented in **Sui Move**. It allows users to deposit any type of coin and receive a unique, non-transferable receipt NFT that can be used to withdraw the exact deposited amount.
+The **Blueprint Bank** is a flexible, generic asset deposit and withdrawal system implemented in **Sui Move**. It allows users to deposit any type of coin and receive a unique, non-transferable receipt NFT that can be used to withdraw the exact deposited amount.
 
 ## Features
 - Deposit any coin type (**SUI, USDC, custom tokens, etc.**)
@@ -20,10 +20,11 @@ Before using or contributing to this project, ensure you have the following inst
 
 ## Project Structure
 ```
-sui-asset-bank/
+BlueprintBank/
 ├── sources/
 │   ├── bank.move         # Main bank module implementation
 │   ├── bank_tests.move   # Unit tests for the bank module
+│   ├── fake_coin.move    # Test token
 └── Move.toml             # Move package configuration
 ```
 
@@ -31,8 +32,8 @@ sui-asset-bank/
 
 ### Clone the repository:
 ```bash
-git clone https://github.com/yourusername/sui-asset-bank.git
-cd sui-asset-bank
+git clone https://github.com/AureliusEth/BlueprintBank.git
+cd BlueprintBank
 ```
 
 ### Install dependencies:
@@ -43,6 +44,7 @@ sui move build
 ## Running Tests
 To execute the test suite, run:
 ```bash
+cd sources
 sui move test
 ```
 
@@ -83,13 +85,3 @@ The `bank_tests.move` module includes:
 - Multi-coin deposit tests
 - Edge case handling
 
-
-
-## Contributions
-Contributions are welcome! Please submit **pull requests** or open **issues** on the GitHub repository.
-
-## License
-[Choose an appropriate license, e.g., **MIT, Apache 2.0**]
-
-## Contact
-[Your contact information or project maintainer details]
